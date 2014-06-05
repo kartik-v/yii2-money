@@ -6,8 +6,8 @@ The plugin offers a simple way to create masks to your currency form fields. The
 enhancements in order to use the maskMoney plugin effectively:
 
 - default styling for Bootstrap 3 and supports Yii Active Field validations
-- automatically read a float/decimal and convert it to the format on field load
-- automatically convert back the field to a float/decimal once the mask is changed
+- automatically read a float/decimal and convert it to the money format on field load
+- automatically convert back the field to a float/decimal for saving once the mask is changed (maintains an internal hidden field)
 - allows global settings of the mask money plugin options via `Yii::$app->params`
 
 > NOTE: This extension depends on the [kartik-v/yii2-widgets](https://github.com/kartik-v/yii2-widgets) extension which in turn depends on the 

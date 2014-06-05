@@ -78,7 +78,7 @@ from `Yii::$app->formatter` settings in your configuration file.
 ### MaskMoney
 
 You can configure the widget as shown below. Any plugin option not passed, will be defaulted from the above two sections (params and formatter).
-Note that properties directly set in `pluginOptions` at the widget level below, will override other global settings.
+Note that properties directly set in `pluginOptions` at the widget level as shown below, will override other global settings.
 
 ```php
 use kartik\money\MaskMoney;

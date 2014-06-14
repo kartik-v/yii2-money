@@ -98,12 +98,15 @@ class MaskMoney extends \kartik\widgets\InputWidget
         $id = '$("#' . $this->_displayOptions['id'] . '")';
         $idSave = '$("#' . $this->options['id'] . '")';
         $this->registerPlugin('maskMoney', $id);
-        $js = "{$id}.maskMoney('mask');\n" .
-            "{$id}.on('change', function () {
-            var numDecimal = {$id}.maskMoney('unmasked')[0];
-            {$idSave}.val(numDecimal);
-            {$idSave}.trigger('change');
-        });";
+        $js = <<< JS
+var val = parseFloat({$idSave}.val());
+{$id}.maskMoney('mask', val);
+{$id}.on('change', function () {
+     var numDecimal = {$id}.maskMoney('unmasked')[0];
+    {$idSave}.val(numDecimal);
+    {$idSave}.trigger('change');
+});
+JS;
         $view->registerJs($js);
     }
 

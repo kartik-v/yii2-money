@@ -24,6 +24,8 @@ You can see detailed [documentation](http://demos.krajee.com/money) on usage of 
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
+> Note: You must set the `minimum-stability` to `dev` in the **composer.json** file in your application root folder before installation of this extension.
+
 Either run
 
 ```

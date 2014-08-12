@@ -95,8 +95,8 @@ class MaskMoney extends \kartik\widgets\InputWidget
     {
         $view = $this->getView();
         MaskMoneyAsset::register($view);
-        $id = '$("#' . $this->_displayOptions['id'] . '")';
-        $idSave = '$("#' . $this->options['id'] . '")';
+        $id = 'jQuery("#' . $this->_displayOptions['id'] . '")';
+        $idSave = 'jQuery("#' . $this->options['id'] . '")';
         $this->registerPlugin('maskMoney', $id);
         $js = <<< JS
 var val = parseFloat({$idSave}.val());

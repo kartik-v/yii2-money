@@ -34,8 +34,13 @@ class MaskMoney extends \kartik\widgets\InputWidget
     {
         parent::init();
         $this->initPluginOptions();
-        $this->renderInput();
+        $this->_displayOptions = $this->options;
+        $this->_displayOptions['id'] .= '-disp';
+        if (isset($this->_displayOptions['name'])) {
+            unset($this->_displayOptions['name']);
+        }
         $this->registerAssets();
+        $this->renderInput();
     }
 
     /**
@@ -44,12 +49,7 @@ class MaskMoney extends \kartik\widgets\InputWidget
      */
     protected function renderInput()
     {
-        $this->_displayOptions = $this->options;
-        $this->_displayOptions['id'] .= '-disp';
         $name = $this->_displayOptions['id'];
-        if (isset($this->_displayOptions['name'])) {
-            unset($this->_displayOptions['name']);
-        }
         Html::addCssClass($this->_displayOptions, 'form-control');
         $input = Html::textInput($name, $this->value, $this->_displayOptions);
         $input .= $this->hasModel() ?

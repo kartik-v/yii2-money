@@ -23,7 +23,7 @@ class MaskMoneyAsset extends \kartik\widgets\AssetBundle
      */
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setSourcePath(__DIR__ . '/assets');
         $this->setupAssets('js', ['js/jquery.maskMoney']);
         parent::init();
     }

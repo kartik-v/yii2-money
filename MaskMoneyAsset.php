@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-money
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 namespace kartik\money;    
@@ -15,9 +15,8 @@ namespace kartik\money;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class MaskMoneyAsset extends \kartik\widgets\AssetBundle
+class MaskMoneyAsset extends \kartik\base\AssetBundle
 {
-
     /**
      * @inherit doc
      */

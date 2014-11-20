@@ -1,8 +1,9 @@
 version 1.1.0
 =============
-**Date:** 10-Nov-2014
+**Date:** 20-Nov-2014
 
 - Set dependency on Krajee base components
+- (bug #6): Extend from the correct base widget `kartik\base\InputWidget`.
 - Set release to stable
 
 version 1.0.0

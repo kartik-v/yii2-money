@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class MaskMoney extends \kartik\widgets\InputWidget
+class MaskMoney extends \kartik\base\InputWidget
 {
     /**
      * @var array HTML attributes for the displayed input

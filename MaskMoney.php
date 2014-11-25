@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-money
- * @version 1.1.0
+ * @version 1.2.0
  */
 
 namespace kartik\money;
@@ -22,6 +22,11 @@ use yii\helpers\ArrayHelper;
  */
 class MaskMoney extends \kartik\base\InputWidget
 {
+    /**
+     * @inherit doc
+     */
+    protected $_pluginName = 'maskMoney';
+    
     /**
      * @var array HTML attributes for the displayed input
      */
@@ -97,12 +102,13 @@ class MaskMoney extends \kartik\base\InputWidget
         MaskMoneyAsset::register($view);
         $id = 'jQuery("#' . $this->_displayOptions['id'] . '")';
         $idSave = 'jQuery("#' . $this->options['id'] . '")';
-        $this->registerPlugin('maskMoney', $id);
+        $plugin = $this->_pluginName;
+        $this->registerPlugin($plugin, $id);
         $js = <<< JS
 var val = parseFloat({$idSave}.val());
-{$id}.maskMoney('mask', val);
+{$id}.{$plugin}('mask', val);
 {$id}.on('change', function () {
-     var numDecimal = {$id}.maskMoney('unmasked')[0];
+     var numDecimal = {$id}.{$plugin}('unmasked')[0];
     {$idSave}.val(numDecimal);
     {$idSave}.trigger('change');
 });

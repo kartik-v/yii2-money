@@ -13,6 +13,9 @@ enhancements in order to use the maskMoney plugin effectively:
 ### Demo
 You can see detailed [documentation](http://demos.krajee.com/money) on usage of the extension.
 
+### Latest Release
+The latest version of the extension is release v1.2.0. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-money/blob/master/CHANGE.md) for details of various releases.
+
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).

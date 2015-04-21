@@ -1,11 +1,11 @@
 yii2-money
 ==========
 
-[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-money/v/stable.svg)](https://packagist.org/packages/kartik-v/yii2-money)
-[![License](https://poser.pugx.org/kartik-v/yii2-money/license.svg)](https://packagist.org/packages/kartik-v/yii2-money)
-[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-money/downloads.svg)](https://packagist.org/packages/kartik-v/yii2-money)
-[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-money/d/monthly.png)](https://packagist.org/packages/kartik-v/yii2-money)
-[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-money/d/daily.png)](https://packagist.org/packages/kartik-v/yii2-money)
+[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-money/v/stable)](https://packagist.org/packages/kartik-v/yii2-money)
+[![License](https://poser.pugx.org/kartik-v/yii2-money/license)](https://packagist.org/packages/kartik-v/yii2-money)
+[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-money/downloads)](https://packagist.org/packages/kartik-v/yii2-money)
+[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-money/d/monthly)](https://packagist.org/packages/kartik-v/yii2-money)
+[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-money/d/daily)](https://packagist.org/packages/kartik-v/yii2-money)
 
 An advanced money mask input for Yii Framework 2 based on [jQuery-maskMoney plugin](https://github.com/plentz/jquery-maskmoney). 
 The plugin offers a simple way to create masks to your currency form fields. The yii2-money extension includes these additional

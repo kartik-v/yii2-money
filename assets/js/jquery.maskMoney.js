@@ -29,10 +29,11 @@
         mask : function (value) {
             return this.each(function () {
                 var $this = $(this),
+                    settings = $(this).data('settings'),
                     decimalSize;
                 if (typeof value === "number") {
                     $this.trigger("mask");
-                    decimalSize = $($this.val().split(/\D/)).last()[0].length;
+                    decimalSize = settings.precision;
                     value = value.toFixed(decimalSize);
                     $this.val(value);
                 }
@@ -43,20 +44,12 @@
         unmasked : function () {
             return this.map(function () {
                 var value = ($(this).val() || "0"),
-                    isNegative = value.indexOf("-") !== -1,
-                    decimalPart;
-                // get the last position of the array that is a number(coercion makes "" to be evaluated as false)
-                $(value.split(/\D/).reverse()).each(function (index, element) {
-                    if(element) {
-                        decimalPart = element;
-                        return false;
-                   }
-                });
-                value = value.replace(/\D/g, "");
-                value = value.replace(new RegExp(decimalPart + "$"), "." + decimalPart);
-                if (isNegative) {
-                    value = "-" + value;
-                }
+                    settings = $(this).data('settings');
+                value = value.replace(settings.prefix, '');
+                value = value.replace(settings.suffix, '');
+                while (value.indexOf(settings.thousands) != -1)
+                    value = value.replace(settings.thousands, '');
+                value = value.replace(settings.decimal, '.');
                 return parseFloat(value);
             });
         },
@@ -384,6 +377,7 @@
                     }
                 }
 
+                $input.data('settings', settings);
                 $input.unbind(".maskMoney");
                 $input.bind("keypress.maskMoney", keypressEvent);
                 $input.bind("keydown.maskMoney", keydownEvent);

@@ -29,10 +29,11 @@
         mask : function (value) {
             return this.each(function () {
                 var $this = $(this),
+                    settings = $(this).data('settings'),
                     decimalSize;
                 if (typeof value === "number") {
                     $this.trigger("mask");
-                    decimalSize = $($this.val().split(/\D/)).last()[0].length;
+                    decimalSize = settings.precision;
                     value = value.toFixed(decimalSize);
                     $this.val(value);
                 }
@@ -376,6 +377,7 @@
                     }
                 }
 
+                $input.data('settings', settings);
                 $input.unbind(".maskMoney");
                 $input.bind("keypress.maskMoney", keypressEvent);
                 $input.bind("keydown.maskMoney", keydownEvent);

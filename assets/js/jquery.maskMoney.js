@@ -319,6 +319,9 @@
 
                         maskAndPosition(startPos);
                         return false;
+                    } else if (key === 13) { // enter key
+                        blurEvent(e);
+                        return true;
                     } else if (key === 9) { // tab key
                         return true;
                     } else { // any other key

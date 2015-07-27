@@ -228,6 +228,9 @@
 
                 function keypressEvent(e) {
                     e = e || window.event;
+                    if(e.target.readOnly) {
+                        return false;
+                    }
                     var key = e.which || e.charCode || e.keyCode,
                         keyPressedChar,
                         selection,
@@ -278,6 +281,9 @@
 
                 function keydownEvent(e) {
                     e = e || window.event;
+                    if(e.target.readOnly) {
+                        return false;
+                    }
                     var key = e.which || e.charCode || e.keyCode,
                         selection,
                         startPos,

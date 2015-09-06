@@ -201,7 +201,7 @@
                 }
 
                 function mask() {
-                    var value = $input.val();
+                    var value = $input.val().replace(/[^0-9]/g, "");
                     if (settings.allowZero || $.isNumeric(value)) {
                         $input.val(maskValue(value));
                     } else {

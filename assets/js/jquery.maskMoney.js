@@ -202,7 +202,11 @@
 
                 function mask() {
                     var value = $input.val();
-                    $input.val(maskValue(value));
+                    if (settings.allowZero || $.isNumeric(value)) {
+                        $input.val(maskValue(value));
+                    } else {
+                        $input.val("");
+                    }
                 }
 
                 function changeSign() {

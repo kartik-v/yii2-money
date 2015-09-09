@@ -262,6 +262,7 @@
                             return true;
                         } else { // any other key with keycode less than 48 and greater than 57
                             preventDefault(e);
+                            focusEvent();
                             return true;
                         }
                     } else if (!canInputMoreNumbers()) {

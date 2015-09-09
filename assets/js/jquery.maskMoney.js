@@ -201,8 +201,12 @@
                 }
 
                 function mask() {
-                    var value = $input.val();
-                    $input.val(maskValue(value));
+                    var value = $input.val().replace(/[^0-9]/g, "");
+                    if (settings.allowZero || $.isNumeric(value)) {
+                        $input.val(maskValue(value));
+                    } else {
+                        $input.val("");
+                    }
                 }
 
                 function changeSign() {
@@ -258,6 +262,7 @@
                             return true;
                         } else { // any other key with keycode less than 48 and greater than 57
                             preventDefault(e);
+                            focusEvent();
                             return true;
                         }
                     } else if (!canInputMoreNumbers()) {
@@ -385,7 +390,7 @@
                 }
 
                 $input.unbind(".maskMoney");
-                $input.bind("keypress.maskMoney", keypressEvent);
+                $input.bind("keyup.maskMoney", keypressEvent);
                 $input.bind("keydown.maskMoney", keydownEvent);
                 $input.bind("blur.maskMoney", blurEvent);
                 $input.bind("focus.maskMoney", focusEvent);

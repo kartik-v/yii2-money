@@ -107,7 +107,7 @@ class MaskMoney extends \kartik\base\InputWidget
         $js = <<< JS
 var val = parseFloat({$idSave}.val());
 {$id}.{$plugin}('mask', val);
-{$id}.on('change', function () {
+{$id}.on('keyup', function () {
      var numDecimal = {$id}.{$plugin}('unmasked')[0];
     {$idSave}.val(numDecimal);
     {$idSave}.trigger('change');

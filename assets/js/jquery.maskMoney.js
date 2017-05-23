@@ -219,7 +219,9 @@
 
                 function mask() {
                     var value = $input.val();
-                    if (settings.allowEmpty && value === "") {
+                    // corrected by Kartik for initial empty value being treated as NaN
+                    if (settings.allowEmpty && (value === "" || isNaN(parseFloat(value)))) {
+                        $input.val("");
                         return;
                     }
                     if (settings.precision > 0 && value.indexOf(settings.decimal) < 0) {

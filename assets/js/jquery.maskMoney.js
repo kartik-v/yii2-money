@@ -10,8 +10,6 @@
  *    1400.50 with precision 2 is wrongly displayed as 140.05 - the last zero was omitted)
  *
  *  Under MIT License
- *
- made for https://github.com/kartik-v/yii2-money to fix zero precision bugs.
  */
 (function ($) {
     "use strict";

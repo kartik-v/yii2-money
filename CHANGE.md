@@ -7,8 +7,7 @@ Change Log: `yii2-money`
 
 - (bug #26, #23, #22, #16, #9): Core plugin custom fixes for right precision handling.
     - fixes mask display bugs when precision is set to zero and suffix is set 
-    - fixes masking when precision is set but the decimal part length is less than precision length (for example
-      1400.50 with precision 2 is wrongly displayed as 140.05 - the last zero was omitted)
+    - fixes masking when precision is set but the decimal part length is less than precision length (for example 1400.50 with precision 2 was wrongly displayed as 140.05 - this change fixes this bug where the leading zeros after decimals were omitted)
 - (enh #25, #11, #10): Update to release v3.1.1 of source plugin.
 - (bug #24, #17, #12, #4): Enhance to calculate changed money mask when enter key is pressed.
 - (enh #15): New `displayInputName` property to control display input name attribute.

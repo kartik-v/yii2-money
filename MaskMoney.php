@@ -1,39 +1,57 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @package yii2-money
- * @version 1.2.1
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
+ * @package   yii2-money
+ * @version   1.2.2
  */
 
 namespace kartik\money;
 
+use kartik\base\InputWidget;
 use Yii;
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 
 /**
- * A money mask input widget styled for Bootstrap 3 based on the jQuery-maskMoney plugin,
- * which offers a simple way to create masks to your currency form fields.
+ * MaskMoney is an input widget styled for Bootstrap 3 based on the jQuery-maskMoney plugin, which offers a simple way
+ * to create masks to your currency form fields.
  *
- * @see https://github.com/plentz/jquery-maskmoney
+ * Usage example:
+ *
+ * ~~~
+ * use kartik\money\MaskMoney;
+ * echo MaskMoney::widget([
+ *    'name' => 'currency',
+ *    'value' => 122423.18,
+ *    'pluginOptions' => [
+ *        'prefix' => '$ ',
+ *    ],
+ * ]);
+ * ~~~
+ *
+ * @see    https://github.com/plentz/jquery-maskmoney
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
-class MaskMoney extends \kartik\base\InputWidget
+class MaskMoney extends InputWidget
 {
     /**
-     * @inherit doc
+     * @var string the HTML name attribute for the rendered money text input. Will be auto generated if not set.
      */
-    protected $_pluginName = 'maskMoney';
-    
+    public $displayInputName;
+
+    /**
+     * @inheritdoc
+     */
+    public $pluginName = 'maskMoney';
+
     /**
      * @var array HTML attributes for the displayed input
      */
     private $_displayOptions = [];
 
     /**
-     * @inherit doc
+     * @inheritdoc
      */
     public function init()
     {
@@ -49,12 +67,12 @@ class MaskMoney extends \kartik\base\InputWidget
     }
 
     /**
-     * Renders a text input for widget display along with an internal
-     * hidden input to validate and save the raw number (float) data.
+     * Renders a text input for widget display along with an internal hidden input to validate and save the raw number
+     * (float) data.
      */
     protected function renderInput()
     {
-        $name = $this->_displayOptions['id'];
+        $name = isset($this->displayInputName) ? $this->displayInputName : $this->_displayOptions['id'];
         Html::addCssClass($this->_displayOptions, 'form-control');
         $input = Html::textInput($name, $this->value, $this->_displayOptions);
         $input .= $this->hasModel() ?
@@ -64,10 +82,10 @@ class MaskMoney extends \kartik\base\InputWidget
     }
 
     /**
-     * Validates app level formatter settings and sets plugin defaults
+     * Validates app level formatter settings and sets plugin defaults.
      *
-     * @param string $paramFrom the property setting in Yii::$app->formatter
-     * @param string $paramFrom the setting in jQuery-maskMoney [[pluginOptions]]
+     * @param string $paramFrom the property setting in `Yii::$app->formatter`
+     * @param string $paramTo   the setting in jQuery-maskMoney [[pluginOptions]]
      */
     protected function setDefaultFormat($paramFrom, $paramTo)
     {
@@ -78,10 +96,8 @@ class MaskMoney extends \kartik\base\InputWidget
     }
 
     /**
-     * Initializes default plugin options based on global settings
-     * as setup in `Yii::$app->params['maskMoneyOptions']`, else
-     * defaults the decimalSeparator and thousandSeparator from
-     * `Yii::$app->formatter` settings.
+     * Initializes default plugin options based on global settings as setup in `Yii::$app->params['maskMoneyOptions']`,
+     * else defaults the `decimalSeparator` and `thousandSeparator` from `Yii::$app->formatter` settings.
      */
     protected function initPluginOptions()
     {
@@ -94,23 +110,26 @@ class MaskMoney extends \kartik\base\InputWidget
     }
 
     /**
-     * Registers the needed assets
+     * Registers the client assets for [[MaskMoney]] widget.
      */
     public function registerAssets()
     {
         $view = $this->getView();
         MaskMoneyAsset::register($view);
+        $sid = $this->options['id'];
         $id = 'jQuery("#' . $this->_displayOptions['id'] . '")';
-        $idSave = 'jQuery("#' . $this->options['id'] . '")';
-        $plugin = $this->_pluginName;
+        $idSave = 'jQuery("#' . $sid . '")';
+        $plugin = $this->pluginName;
         $this->registerPlugin($plugin, $id);
+        $debug = YII_DEBUG ? "\n\tconsole.log('Unmasked Output ({$sid}): ' + out);" : '';
         $js = <<< JS
 var val = parseFloat({$idSave}.val());
 {$id}.{$plugin}('mask', val);
-{$id}.on('change', function () {
-     var numDecimal = {$id}.{$plugin}('unmasked')[0];
-    {$idSave}.val(numDecimal);
-    {$idSave}.trigger('change');
+{$id}.on('change keyup', function (e) {
+     if (e.type ==='change' || (e.type === 'keyup' && (e.keyCode == 13 || e.which == 13))) {
+         var out = {$id}.{$plugin}('unmasked')[0];
+        {$idSave}.val(out).trigger('change');{$debug}
+     }
 });
 JS;
         $view->registerJs($js);

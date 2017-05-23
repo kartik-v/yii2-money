@@ -1,24 +1,26 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
  * @package yii2-money
- * @version 1.2.1
+ * @version 1.2.2
  */
 
-namespace kartik\money;    
+namespace kartik\money;
+
+use kartik\base\AssetBundle;
 
 /**
- * Asset bundle for the [[MaskMoney]] widget. Includes client assets from 
+ * Asset bundle for the [[MaskMoney]] widget. Includes client assets from
  * [jQuery-maskMoney](https://github.com/plentz/jquery-maskmoney).
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class MaskMoneyAsset extends \kartik\base\AssetBundle
+class MaskMoneyAsset extends AssetBundle
 {
     /**
-     * @inherit doc
+     * @inheritdoc
      */
     public function init()
     {
@@ -26,5 +28,4 @@ class MaskMoneyAsset extends \kartik\base\AssetBundle
         $this->setupAssets('js', ['js/jquery.maskMoney']);
         parent::init();
     }
-
 }

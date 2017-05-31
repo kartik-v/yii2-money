@@ -253,6 +253,9 @@
 
                 function keypressEvent(e) {
                     e = e || window.event;
+                    if(e.target.readOnly) {
+                        return false;
+                    }
                     var key = e.which || e.charCode || e.keyCode,
                         decimalKeyCode = settings.decimal.charCodeAt(0);
                     //added to handle an IE "special" event
@@ -344,6 +347,9 @@
 
                 function keydownEvent(e) {
                     e = e || window.event;
+                    if(e.target.readOnly) {
+                        return false;
+                    }
                     var key = e.which || e.charCode || e.keyCode,
                         selection,
                         startPos,

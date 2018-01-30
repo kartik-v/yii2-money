@@ -7,6 +7,9 @@ yii2-money
 [![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-money/d/monthly)](https://packagist.org/packages/kartik-v/yii2-money)
 [![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-money/d/daily)](https://packagist.org/packages/kartik-v/yii2-money)
 
+> ### Note
+> This extension has been replaced with the [yii2-number](https://github.com/kartik-v/yii2-number) extension since Jan 2018. This extension will not be enhanced further or supported. Recommend to head over to [yii2-number extension docs and demos](http://demos.krajee.com/number) for enhanced number management functionality for Yii2.
+
 An advanced money mask input for Yii Framework 2 based on [jQuery-maskMoney plugin](https://github.com/plentz/jquery-maskmoney). 
 The plugin offers a simple way to create masks to your currency form fields. The yii2-money extension includes these additional
 enhancements in order to use the maskMoney plugin effectively:

@@ -4,7 +4,7 @@
     "keywords": ["yii2", "extension", "widget", "money", "currency", "format", "mask", "jquery", "bootstrap", "bootstrap 3"],
     "homepage": "https://github.com/kartik-v/yii2-money",
     "type": "yii2-extension",
-    "license": "BSD 3-Clause",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Kartik Visweswaran",
@@ -13,11 +13,11 @@
         }
     ],
     "require": {
-        "kartik-v/yii2-krajee-base": "~1.7"
+        "kartik-v/yii2-krajee-base": ">=2.0.0"
     },
     "autoload": {
         "psr-4": {
-            "kartik\\money\\": ""
+            "kartik\\money\\": "src"
         }
     },
     "extra": {

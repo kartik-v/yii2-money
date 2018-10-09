@@ -1,9 +1,12 @@
 Change Log: `yii2-money`
 ========================
 
-## Development version
+## Version 1.2.3
 
-- (bug #33): Fix regression with empty prefix (changes from upstream).
+**Date**: 09-Oct-2018
+
+- Bump composer dependencies.
+- Move all source code to `src` directory.
 
 ## Version 1.2.2
 

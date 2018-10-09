@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
  * @package   yii2-money
- * @version   1.2.2
+ * @version   1.2.3
  */
 
 namespace kartik\money;
